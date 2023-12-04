@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.HelloController">
+   <children>
+      <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="800.0">
+        <menus>
+            <Menu mnemonicParsing="false" text="Register">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#jmiEmagrecimento" text="Emagrecimento" />
+                  <MenuItem mnemonicParsing="false" onAction="#jmiEstetica" text="Estetica" />
+               </items>
+            </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#jmiEditEmagrecimento" text="Emagrecimento" />
+                  <MenuItem mnemonicParsing="false" onAction="#jmiEditEstetica" text="Estetica" />
+            </items>
+          </Menu>
+            <Menu mnemonicParsing="false" text="Mostrar">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#jmiMostrarEstetica" text="Estetica" />
+                  <MenuItem mnemonicParsing="false" onAction="#jmiMostrarEmagrecimento" text="Emagrecimento" />
+               </items>
+            </Menu>
+          <Menu mnemonicParsing="false" onAction="#jmiClose" text="Close">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Project" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help" />
+        </menus>
+      </MenuBar>
+      <Pane fx:id="pane" layoutX="1.0" layoutY="27.0" prefHeight="472.0" prefWidth="800.0">
+         <children>
+            <TextField layoutX="47.0" layoutY="112.0" />
+            <TextField layoutX="310.0" layoutY="112.0" />
+            <TextField layoutX="590.0" layoutY="112.0" />
+            <TextField layoutX="47.0" layoutY="227.0" />
+            <TextField layoutX="310.0" layoutY="227.0" />
+            <TextField layoutX="590.0" layoutY="227.0" />
+            <Label layoutX="107.0" layoutY="89.0" text="Nome" />
+            <Label layoutX="85.0" layoutY="203.0" text="Tipo Atividade" />
+            <Label layoutX="368.0" layoutY="89.0" text="Telefone" />
+            <Label layoutX="378.0" layoutY="203.0" text="Peso" />
+            <Label layoutX="648.0" layoutY="89.0" text="Sexo" />
+            <Label layoutX="648.0" layoutY="203.0" text="Altura" />
+            <Button layoutX="345.0" layoutY="368.0" mnemonicParsing="false" onMouseClicked="#cadastrarCliente" text="Cadastrar" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
