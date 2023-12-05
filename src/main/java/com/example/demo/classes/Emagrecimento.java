@@ -9,8 +9,8 @@ public class Emagrecimento extends Paciente implements Atividades {
     private double pesoIdeal;
     CalculoPeso calculoPeso = new CalculoPeso();
 
-    public Emagrecimento(String nome, String telefone, String sexo, String tipoAtividade, double peso, double altura) {
-        super(nome, telefone, sexo, tipoAtividade);
+    public Emagrecimento(String nome, String telefone, String sexo, double peso, double altura) {
+        super(nome, telefone, sexo);
         this.peso = peso;
         this.altura = altura;
         this.pesoIdeal = calculoPeso.pesoIdeal(altura, sexo);

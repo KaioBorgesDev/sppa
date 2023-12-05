@@ -5,8 +5,8 @@ import com.example.demo.interfaces.Atividades;
 
 public class Estetica extends Paciente implements Atividades {
 
-    public Estetica(String nome, String telefone, String sexo, String tipoAtividade) {
-        super(nome, telefone, sexo, tipoAtividade);
+    public Estetica(String nome, String telefone, String sexo) {
+        super(nome, telefone, sexo);
     }
 
     @Override

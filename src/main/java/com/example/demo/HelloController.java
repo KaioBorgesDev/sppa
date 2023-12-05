@@ -1,37 +1,50 @@
 package com.example.demo;
 
+import com.example.demo.classes.Emagrecimento;
+import com.example.demo.classes.Estetica;
+import com.example.demo.classes.Paciente;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
+import javafx.stage.Stage;
+import org.controlsfx.control.Notifications;
+
+
+import java.util.HashSet;
+import java.util.Set;
 
 public class HelloController {
     @FXML
-    private Label welcomeText;
-    @FXML
     Pane pane;
-
+    Set<Paciente> pacientes = new HashSet<>();
 
     private Pane criarPainelEstetica() {
         pane.getChildren().clear();
 
-        TextField textField1 = new TextField();
-        textField1.setLayoutX(47.0);
-        textField1.setLayoutY(112.0);
+        TextField nome = new TextField();
+        nome.setLayoutX(47.0);
+        nome.setLayoutY(112.0);
 
-        TextField textField2 = new TextField();
-        textField2.setLayoutX(310.0);
-        textField2.setLayoutY(112.0);
+        TextField telefone = new TextField();
+        telefone.setLayoutX(330.0);
+        telefone.setLayoutY(112.0);
 
-        TextField textField3 = new TextField();
-        textField3.setLayoutX(590.0);
-        textField3.setLayoutY(112.0);
+        TextField sexo = new TextField();
+        sexo.setLayoutX(590.0);
+        sexo.setLayoutY(112.0);
 
-        TextField textField4 = new TextField();
-        textField4.setLayoutX(47.0);
-        textField4.setLayoutY(227.0);
+        ComboBox<String> tipoAtividade = new ComboBox<>();
+        tipoAtividade.setLayoutX(47.0);
+        tipoAtividade.setLayoutY(227.0);
+        tipoAtividade.setPrefWidth(200.0);
+        tipoAtividade.getItems().addAll("Realizando caminhada no bosque para emagrecimento.", "Realizando academia para emagrecimento.", "Realizando natacao para emagrecimento.");
+
 
         Label label1 = new Label("Nome");
         label1.setLayoutX(107.0);
@@ -40,6 +53,7 @@ public class HelloController {
         Label label2 = new Label("Tipo Atividade");
         label2.setLayoutX(85.0);
         label2.setLayoutY(203.0);
+
 
         Label label3 = new Label("Telefone");
         label3.setLayoutX(368.0);
@@ -63,12 +77,26 @@ public class HelloController {
         comboBox.setPrefWidth(150.0);
         comboBox.getItems().addAll("1", "2", "3");
 
+        //metodo que cadastra
+
         button.setOnMouseClicked(e->{
-            System.out.println("Ola Estetica");
+            System.out.println(telefone.getText());
+            if (!nome.getText().isEmpty() && !telefone.getText().isEmpty() && !sexo.getText().isEmpty()){
+                String nomes = nome.getText();
+                String telefones = telefone.getText();
+                String sexos = sexo.getText();
+
+                System.out.println(telefones);
+                Paciente paciente = new Estetica(nomes,telefones,sexos);
+                pacientes.add(paciente);
+                mostrarNotificacao("Cadastradado com sucesso!","Paciente de Estetica cadastrado.");
+            } else {
+                mostrarNotificacao("Dados Incompletos","Há campos vazios.");
+            }
         });
 
         pane.getChildren().addAll(
-                textField1, textField2, textField3, textField4,
+                nome, telefone, sexo, tipoAtividade,
                 label1, label2, label3, label4, label5,
                 button, comboBox
         );
@@ -80,29 +108,31 @@ public class HelloController {
         pane.getChildren().clear();
 
 
-        TextField textField1 = new TextField();
-        textField1.setLayoutX(47.0);
-        textField1.setLayoutY(112.0);
+        TextField nome = new TextField();
+        nome.setLayoutX(47.0);
+        nome.setLayoutY(112.0);
 
-        TextField textField2 = new TextField();
-        textField2.setLayoutX(310.0);
-        textField2.setLayoutY(112.0);
+        ComboBox<String> tipoAtividade = new ComboBox<>();
+        tipoAtividade.setLayoutX(47.0);
+        tipoAtividade.setLayoutY(227.0);
+        tipoAtividade.setPrefWidth(200.0);
+        tipoAtividade.getItems().addAll("Realizando caminhada no bosque para emagrecimento.", "Realizando academia para emagrecimento.", "Realizando natacao para emagrecimento.");
 
-        TextField textField3 = new TextField();
-        textField3.setLayoutX(590.0);
-        textField3.setLayoutY(112.0);
+        TextField telefone = new TextField();
+        telefone.setLayoutX(330.0);
+        telefone.setLayoutY(112.0);
 
-        TextField textField4 = new TextField();
-        textField4.setLayoutX(47.0);
-        textField4.setLayoutY(227.0);
+        TextField peso = new TextField();
+        peso.setLayoutX(47.0);
+        peso.setLayoutY(227.0);
 
-        TextField textField5 = new TextField();
-        textField5.setLayoutX(310.0);
-        textField5.setLayoutY(227.0);
+        TextField sexo = new TextField();
+        sexo.setLayoutX(310.0);
+        sexo.setLayoutY(227.0);
 
-        TextField textField6 = new TextField();
-        textField6.setLayoutX(590.0);
-        textField6.setLayoutY(227.0);
+        TextField altura = new TextField();
+        altura.setLayoutX(590.0);
+        altura.setLayoutY(227.0);
 
         Label label1 = new Label("Nome");
         label1.setLayoutX(107.0);
@@ -134,11 +164,27 @@ public class HelloController {
 
 
         button.setOnMouseClicked(e->{
-            System.out.println("Ola");
+            System.out.println(telefone.getText());
+            if (!nome.getText().isEmpty() && !tipoAtividade.getValue().isEmpty() && !telefone.getText().isEmpty() && !peso.getText().isEmpty() && !sexo.getText().isEmpty() && !altura.getText().isEmpty()) {
+                String nomes = nome.getText();
+                String tipoatividade = tipoAtividade.getValue();
+                String telefones = telefone.getText();
+                double pesos = Double.parseDouble(peso.getText());
+                String sexos = sexo.getText() ;
+                double alturas = Double.parseDouble(altura.getText());
+
+                Paciente paciente = new Emagrecimento(nomes,telefones,sexos,pesos,alturas);
+                mostrarNotificacao("Cadastrado com sucesso!","Paciente de Emagrecimento cadastrado.");
+            } else {
+                mostrarNotificacao("Dados incompletos!", "Há campos vazios!");
+            }
+
+
+
         });
         pane.getChildren().addAll(
-                textField1, textField2, textField3,
-                textField4, textField5, textField6,
+                nome, telefone,
+                peso, sexo, altura,
                 label1, label2, label3, label4, label5, label6,
                 button
         );
@@ -194,12 +240,21 @@ public class HelloController {
     }
     @FXML
     void cadastrarCliente(MouseEvent event) {
-        System.out.println("oi");
+
     }
 
     @FXML
     void jmiClose(ActionEvent event) {
         System.exit(0);
     }
+
+
+    private void mostrarNotificacao(String titulo, String texto) {
+        Notifications.create()
+                .title(titulo)
+                .text(texto)
+                .show();
+    }
 }
+
 
